@@ -1,3 +1,4 @@
+
 const btnAdd = document.querySelector("#btn-add");
 const container = document.querySelector(".container");
 const sound = new Audio("IARRU.mp3");
@@ -54,30 +55,35 @@ const addNewNote = () => {
 
   sound.play();
 
-  marioPosition -= 50;
-  mario.style.bottom = `${marioPosition}px`;
-
   if (!isJumping) {
     isJumping = true;
+    const newMarioPosition = marioPosition - 50;
 
-    const newMarioPosition = marioPosition + 50;
-
-    mario.style.transform = "translateY(-20px)";
+    mario.style.transform = "translateY(-50px)";
     mario.style.transition = "transform 0.3s ease";
 
     setTimeout(() => {
       mario.style.transform = "translateY(0)";
-      mario.style.bottom = `${newMarioPosition}px`;
       setTimeout(() => {
-        isJumping = false;
+        mario.style.bottom = `${newMarioPosition}px`;
+        setTimeout(() => {
+          mario.style.transform = "translateY(50px)";
+          setTimeout(() => {
+            mario.style.transform = "translateY(0)";
+            setTimeout(() => {
+              mario.style.bottom = `${marioPosition}px`;
+              isJumping = false;
+            }, 300);
+          }, 300);
+        }, 300);
       }, 300);
-    }, 300);
+    }, 10);
   }
 
   notesGenerated.style.opacity = "1";
   notesGenerated.style.transform = "scale(1)";
   notesGenerated.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-  notesGenerated.style.zIndex = "8"
+
   document.querySelector("#title").value = "";
   document.querySelector("#text-area").value = "";
 };
