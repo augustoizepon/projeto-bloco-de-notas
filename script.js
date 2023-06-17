@@ -43,3 +43,4 @@ const addNewNote = () => {
 };
 
 btnAdd.addEventListener("click", addNewNote);
+loadNotes(); // Carregar as notas ao carregar a página
