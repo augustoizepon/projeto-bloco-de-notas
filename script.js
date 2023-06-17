@@ -12,8 +12,10 @@ mario.style.left = "0";
 mario.style.height = "100px";
 mario.style.width = "100px";
 container.appendChild(mario);
-
 let marioPosition = 0;
+const marioInitalPosition = () =>{
+  mario.style.bottom = `${marioPosition}px`;
+}
 
 const addNewNote = () => {
   let title = document.querySelector("#title").value;
@@ -53,7 +55,7 @@ const addNewNote = () => {
 
   sound.play();
 
-  marioPosition -= 50;
+  marioPosition = 50;
   mario.style.bottom = `${marioPosition}px`;
 
   mario.style.animation = "jump 0.3s ease";
@@ -110,3 +112,4 @@ clearCacheButton.addEventListener("click", clearCache);
 
 btnAdd.addEventListener("click", addNewNote);
 loadNotes();
+
