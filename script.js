@@ -4,7 +4,7 @@ const sound = new Audio("IARRU.mp3");
 
 const mario = document.createElement("img");
 mario.id = "mario";
-mario.src = "https://tenor.com/bhGHO.gif";
+mario.src = "mario.gif";
 mario.alt = "Mario";
 mario.style.position = "fixed";
 mario.style.bottom = "0";
