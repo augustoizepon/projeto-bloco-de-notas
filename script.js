@@ -28,7 +28,6 @@ const addNewNote = () => {
   textArea.className = "textArea";
   notesGenerated.appendChild(titleAndAddGenerated);
   notesGenerated.appendChild(textArea);
-  document.body.appendChild(notesGenerated);
   container.appendChild(notesGenerated);
 
   const dateTimeElement = document.createElement("div");
