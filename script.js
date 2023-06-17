@@ -42,5 +42,30 @@ const addNewNote = () => {
   document.querySelector("#text-area").value = "";
 };
 
+const loadNotes = () => {
+  let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+  notes.forEach((note) => {
+    const notesGenerated = document.createElement("div");
+    notesGenerated.className = "notesGenerated";
+    const titleAndAddGenerated = document.createElement("div");
+    titleAndAddGenerated.className = "titleAndAddGenerated";
+    const textArea = document.createElement("div");
+    textArea.className = "textArea";
+    notesGenerated.appendChild(titleAndAddGenerated);
+    notesGenerated.appendChild(textArea);
+    container.appendChild(notesGenerated);
+
+    const dateTimeElement = document.createElement("div");
+    dateTimeElement.className = "dateTime";
+    dateTimeElement.textContent = note.dateTime;
+    notesGenerated.appendChild(dateTimeElement);
+
+    titleAndAddGenerated.textContent = note.title;
+    textArea.textContent = note.textContent;
+  });
+};
+
+
 btnAdd.addEventListener("click", addNewNote);
 loadNotes(); // Carregar as notas ao carregar a página
