@@ -126,7 +126,7 @@ clearCacheButton.style.backgroundColor = "yellow";
 
 clearCacheButton.style.fontFamily = "Arial";
 
-document.body.appendChild(clearCacheButton);
+container.appendChild(clearCacheButton);
 
 const clearCache = () => {
 
