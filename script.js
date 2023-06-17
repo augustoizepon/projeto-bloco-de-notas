@@ -11,12 +11,10 @@ mario.style.bottom = "0";
 mario.style.left = "0";
 mario.style.height = "100px";
 mario.style.width = "100px";
-mario.style.zIndex = "9999";
 container.appendChild(mario);
+
 let marioPosition = 0;
-const marioInitalPosition = () =>{
-  mario.style.bottom = `${marioPosition}px`;
-}
+let isJumping = false;
 
 const addNewNote = () => {
   let title = document.querySelector("#title").value;
@@ -56,14 +54,25 @@ const addNewNote = () => {
 
   sound.play();
 
-  marioPosition += 50;
+  marioPosition -= 50;
   mario.style.bottom = `${marioPosition}px`;
 
-  mario.style.animation = "jump 0.3s ease";
+  if (!isJumping) {
+    isJumping = true;
 
-  setTimeout(() => {
-    mario.style.animation = "";
-  }, 300);
+    const newMarioPosition = marioPosition + 50;
+
+    mario.style.transform = "translateY(-20px)";
+    mario.style.transition = "transform 0.3s ease";
+
+    setTimeout(() => {
+      mario.style.transform = "translateY(0)";
+      mario.style.bottom = `${newMarioPosition}px`;
+      setTimeout(() => {
+        isJumping = false;
+      }, 300);
+    }, 300);
+  }
 
   notesGenerated.style.opacity = "1";
   notesGenerated.style.transform = "scale(1)";
@@ -113,4 +122,3 @@ clearCacheButton.addEventListener("click", clearCache);
 
 btnAdd.addEventListener("click", addNewNote);
 loadNotes();
-
