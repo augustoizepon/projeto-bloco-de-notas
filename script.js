@@ -1,6 +1,8 @@
 const btnAdd = document.querySelector("#btn-add");
 const container = document.querySelector(".container");
 
+const sound = new Audio("IARRU.mp3")
+
 const addNewNote = () => {
   let title = document.querySelector("#title").value;
   let textContentElement = document.querySelector("#text-area").value;
@@ -37,7 +39,9 @@ const addNewNote = () => {
 
   titleAndAddGenerated.textContent = note.title;
   textArea.textContent = note.textContent;
-
+  
+  sound.play()
+  
   document.querySelector("#title").value = "";
   document.querySelector("#text-area").value = "";
 };
