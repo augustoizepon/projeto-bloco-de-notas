@@ -1,4 +1,3 @@
-
 const btnAdd = document.querySelector("#btn-add");
 const container = document.querySelector(".container");
 const sound = new Audio("IARRU.mp3");
@@ -57,26 +56,26 @@ const addNewNote = () => {
 
   if (!isJumping) {
     isJumping = true;
-    const newMarioPosition = marioPosition - 50;
+    const newMarioPosition = marioPosition + 100;
 
-    mario.style.transform = "translateY(-50px)";
-    mario.style.transition = "transform 0.3s ease";
+    mario.style.transform = "translateY(-100px)";
+    mario.style.transition = "transform 0.5s ease";
 
     setTimeout(() => {
       mario.style.transform = "translateY(0)";
       setTimeout(() => {
         mario.style.bottom = `${newMarioPosition}px`;
         setTimeout(() => {
-          mario.style.transform = "translateY(50px)";
+          mario.style.transform = "translateY(-100px)";
           setTimeout(() => {
             mario.style.transform = "translateY(0)";
             setTimeout(() => {
               mario.style.bottom = `${marioPosition}px`;
               isJumping = false;
-            }, 300);
-          }, 300);
-        }, 300);
-      }, 300);
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 500);
     }, 10);
   }
 
