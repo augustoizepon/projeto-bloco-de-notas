@@ -19,6 +19,7 @@ html {
   padding: 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   place-items: center;
@@ -82,6 +83,6 @@ html {
 .textArea {
   background: transparent;
   height: 195px;
-  width: 285px;
+  width: 275px;
   margin-top: 5px;
 }
