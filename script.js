@@ -4,6 +4,22 @@ const container = document.querySelector(".container");
 const addNewNote = () => {
   let title = document.querySelector("#title").value;
   let textContentElement = document.querySelector("#text-area").value;
+
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getDate()}/${
+    currentDate.getMonth() + 1
+  }/${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}`;
+
+  const note = {
+    title: title,
+    textContent: textContentElement,
+    dateTime: formattedDate
+  };
+
+  let notes = JSON.parse(localStorage.getItem("notes")) || [];
+  notes.push(note);
+  localStorage.setItem("notes", JSON.stringify(notes));
+
   const notesGenerated = document.createElement("div");
   notesGenerated.className = "notesGenerated";
   const titleAndAddGenerated = document.createElement("div");
@@ -15,18 +31,13 @@ const addNewNote = () => {
   document.body.appendChild(notesGenerated);
   container.appendChild(notesGenerated);
 
-  const currentDate = new Date();
-  const formattedDate = `${currentDate.getDate()}/${
-    currentDate.getMonth() + 1
-  }/${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}`;
-
   const dateTimeElement = document.createElement("div");
   dateTimeElement.className = "dateTime";
-  dateTimeElement.textContent = formattedDate;
+  dateTimeElement.textContent = note.dateTime;
   notesGenerated.appendChild(dateTimeElement);
 
-  titleAndAddGenerated.textContent = title;
-  textArea.textContent = textContentElement;
+  titleAndAddGenerated.textContent = note.title;
+  textArea.textContent = note.textContent;
 
   document.querySelector("#title").value = "";
   document.querySelector("#text-area").value = "";
