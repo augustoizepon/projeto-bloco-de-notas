@@ -11,7 +11,6 @@ mario.style.bottom = "0";
 mario.style.left = "0";
 mario.style.height = "100px";
 mario.style.width = "100px";
-mario.style.animation = "jump 0.5s ease-in-out";
 container.appendChild(mario);
 
 let marioPosition = 0;
@@ -32,16 +31,17 @@ const addNewNote = () => {
 
   const notesGenerated = document.createElement("div");
   notesGenerated.className = "notesGenerated";
+  notesGenerated.style.opacity = "0";
+  notesGenerated.style.transform = "scale(0)";
+  container.appendChild(notesGenerated);
 
   const titleAndAddGenerated = document.createElement("div");
   titleAndAddGenerated.className = "titleAndAddGenerated";
+  notesGenerated.appendChild(titleAndAddGenerated);
 
   const textArea = document.createElement("div");
   textArea.className = "textArea";
-
-  notesGenerated.appendChild(titleAndAddGenerated);
   notesGenerated.appendChild(textArea);
-  container.appendChild(notesGenerated);
 
   const dateTimeElement = document.createElement("div");
   dateTimeElement.className = "dateTime";
@@ -56,6 +56,16 @@ const addNewNote = () => {
   marioPosition -= 50;
   mario.style.bottom = `${marioPosition}px`;
 
+  mario.style.animation = "jump 0.3s ease";
+
+  setTimeout(() => {
+    mario.style.animation = "";
+  }, 300);
+
+  notesGenerated.style.opacity = "1";
+  notesGenerated.style.transform = "scale(1)";
+  notesGenerated.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
   document.querySelector("#title").value = "";
   document.querySelector("#text-area").value = "";
 };
@@ -65,16 +75,15 @@ const loadNotes = () => {
   notes.forEach((note) => {
     const notesGenerated = document.createElement("div");
     notesGenerated.className = "notesGenerated";
+    container.appendChild(notesGenerated);
 
     const titleAndAddGenerated = document.createElement("div");
     titleAndAddGenerated.className = "titleAndAddGenerated";
+    notesGenerated.appendChild(titleAndAddGenerated);
 
     const textArea = document.createElement("div");
     textArea.className = "textArea";
-
-    notesGenerated.appendChild(titleAndAddGenerated);
     notesGenerated.appendChild(textArea);
-    container.appendChild(notesGenerated);
 
     const dateTimeElement = document.createElement("div");
     dateTimeElement.className = "dateTime";
