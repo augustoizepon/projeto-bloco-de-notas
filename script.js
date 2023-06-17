@@ -77,7 +77,7 @@ const addNewNote = () => {
   notesGenerated.style.opacity = "1";
   notesGenerated.style.transform = "scale(1)";
   notesGenerated.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-
+  notesGenerated.style.zIndex = "8"
   document.querySelector("#title").value = "";
   document.querySelector("#text-area").value = "";
 };
