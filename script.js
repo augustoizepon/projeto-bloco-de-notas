@@ -1,6 +1,7 @@
 const btnAdd = document.querySelector("#btn-add");
 const container = document.querySelector(".container");
 const sound = new Audio("IARRU.mp3");
+const html = document.querySelector("html")
 
 const mario = document.createElement("img");
 mario.id = "mario";
@@ -122,6 +123,14 @@ const clearCache = () => {
   localStorage.removeItem("notes");
   location.reload();
 };
+
+if (html.style.width > "500px"){
+  clearCacheButton.style.top = "10px"
+  clearCacheButton.style.left = "10px"
+  clearCacheButton.style.position = "fixed"
+}
+  
+  
 
 clearCacheButton.addEventListener("click", clearCache);
 
