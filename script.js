@@ -51,7 +51,7 @@ const addNewNote = () => {
   notesGenerated.appendChild(dateTimeElement);
 
   titleAndAddGenerated.textContent = note.title;
-  textArea.textContent = note.textContent;
+  textArea.innerHTML = note.textContent.replace(/\n/g, "<br>"); 
 
   sound.play();
 
